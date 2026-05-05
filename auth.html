@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexcent | Login & Signup</title>
+    <style>
+        body { background: #e9ecef; font-family: 'Segoe UI', sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .card { background: white; padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); width: 100%; max-width: 350px; text-align: center; }
+        input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
+        .btn { background: #4CAF50; color: white; border: none; width: 100%; padding: 12px; border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: bold; margin-top: 10px; }
+        .links { margin-top: 20px; font-size: 14px; color: #4CAF50; cursor: pointer; text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2 id="title">Member Login</h2>
+        <div id="inputs">
+            <input type="text" placeholder="Username or Email">
+            <input type="password" placeholder="Password">
+        </div>
+        <button class="btn" onclick="handleAuth()">Submit</button>
+        <p id="toggleMsg">Don't have an account? <span class="links" onclick="showSignup()">Create New Account</span></p>
+        <br>
+        <a href="index.html" style="color: #666; text-decoration: none; font-size: 13px;">← Back to Home</a>
+    </div>
+
+    <script>
+        let isLogin = true;
+
+        function showSignup() {
+            isLogin = false;
+            document.getElementById('title').innerText = "Create Account";
+            document.getElementById('inputs').innerHTML = `
+                <input type="text" placeholder="Full Name">
+                <input type="email" placeholder="Email Address">
+                <input type="password" placeholder="Create Password">
+            `;
+            document.getElementById('toggleMsg').innerHTML = `Already have an account? <span class="links" onclick="showLogin()">Login here</span>`;
+        }
+
+        function showLogin() {
+            isLogin = true;
+            document.getElementById('title').innerText = "Member Login";
+            document.getElementById('inputs').innerHTML = `
+                <input type="text" placeholder="Username or Email">
+                <input type="password" placeholder="Password">
+            `;
+            document.getElementById('toggleMsg').innerHTML = `Don't have an account? <span class="links" onclick="showSignup()">Create New Account</span>`;
+        }
+
+        function handleAuth() {
+            // Login ba Signup ja-i hok, dashboard-e niye jabe
+            window.location.href = 'dashboard.html';
+        }
+    </script>
+</body>
+</html>
